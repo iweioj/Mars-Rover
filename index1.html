@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Rover Perseverance Model</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div id="map">
+            <div id="drop-mast" class="drop-area">Mast</div>
+            <div id="drop-body" class="drop-area">Body</div>
+            <div id="drop-arm" class="drop-area">Arm</div>
+            <div id="drop-wheel" class="drop-area">Wheel</div>
+        </div>
+        <div id="part-container">
+            <img id="mast" src="https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA24426.jpg" class="part" draggable="true">
+            <img id="body" src="https://res.cloudinary.com/tbmg/ar_16:9,c_thumb,g_auto:subject,f_auto,q_auto/c_limit/v1614026923/sites/tb/features-16x9/38614/perseveranceroverlands_primary-feature-item.jpg" class="part" draggable="true">
+            <img id="arm" src="https://i.dailymail.co.uk/1s/2021/03/09/14/40249170-0-image-a-1_1615298664319.jpg" class="part" draggable="true">
+            <img id="wheel" src="https://science.nasa.gov/wp-content/uploads/2024/03/1004_PIA24489-1-ncamFLWheel-800px.gif?w=3072&format=webp" class="part" draggable="true">
+        </div>
+    </div>
+    <div id="overlay">
+        <div id="modal">
+            <p id="modal-text"></p>
+            <button id="next-button">Next</button>
+            <button id="close-button">Close</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
