@@ -33,18 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         dropArea.addEventListener('drop', (e) => {
             e.preventDefault();
-            if (dropArea.id === `drop-${currentDraggedElement.id}`) {
+            if (dropArea.id === drop-${currentDraggedElement.id}) {
                 dropArea.innerHTML = '';
                 currentDraggedElement.style.width = '100%';
                 currentDraggedElement.style.height = '100%';
                 currentDraggedElement.style.objectFit = 'cover';
                 dropArea.appendChild(currentDraggedElement);
                 completedCount++;
-                console.log(`Completed Count: ${completedCount}`);
+                console.log(Completed Count: ${completedCount});
                 showOverlay(dropArea.id);
-                if (completedCount === 4) {
-                    showImprovementOverlay(); // Call the function to show the improvement overlay
-                }
             }
         });
     });
@@ -77,6 +74,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         modalText.textContent = partDescription;
         overlay.style.display = 'flex';
+
+        // After showing the part description, check if all parts are completed
+        if (completedCount === 4) {
+            nextButton.removeEventListener('click', hideOverlay);
+            nextButton.addEventListener('click', showImprovementOverlay);
+        } else {
+            nextButton.removeEventListener('click', showImprovementOverlay);
+            nextButton.addEventListener('click', hideOverlay);
+        }
     }
 
     // Function to display the improvement summary overlay
@@ -86,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.display = 'flex';
 
         // Event listener to show thank you message after improvement message
-        nextButton.removeEventListener('click', hideOverlay);
+        nextButton.removeEventListener('click', showImprovementOverlay);
         nextButton.addEventListener('click', showThankYouOverlay);
     }
 
