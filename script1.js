@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeMessage = "Welcome to the model of Perseverance, the newest model of Mars rover. Match the images to the correct dropbox and learn about the different parts of the rover!";
 
     let currentDraggedElement = null;
+    let completedCount = 0;
 
     // Function to show the initial overlay with the welcome message
     function showWelcomeOverlay() {
@@ -31,17 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         dropArea.addEventListener('drop', (e) => {
-    e.preventDefault();
-    if (dropArea.id === `drop-${currentDraggedElement.id}`) {  // Corrected template literal syntax
-        dropArea.innerHTML = '';
-        currentDraggedElement.style.width = '100%';
-        currentDraggedElement.style.height = '100%';
-        currentDraggedElement.style.objectFit = 'cover';
-        dropArea.appendChild(currentDraggedElement);
-        showOverlay(dropArea.id);
-    }
-});
-
+            e.preventDefault();
+            if (dropArea.id === drop-${currentDraggedElement.id}) {
+                dropArea.innerHTML = '';
+                currentDraggedElement.style.width = '100%';
+                currentDraggedElement.style.height = '100%';
+                currentDraggedElement.style.objectFit = 'cover';
+                dropArea.appendChild(currentDraggedElement);
+                completedCount++;
+                showOverlay(dropArea.id);
+                if (completedCount === 4) {
+                    showFinalOverlay();
+                }
+            }
+        });
     });
 
     // Event listener for the "Next" button
@@ -75,6 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         modalText.textContent = partDescription;
+        overlay.style.display = 'flex';
+    }
+
+    // Function to display the final summary overlay
+    function showFinalOverlay() {
+        const summaryText = "Enhancing the Mars rover Perseverance with miniaturized nuclear batteries provides a consistent power supply, essential for continuous operation during dust storms and night-time, while advanced suspension systems improve mobility over Mars' rugged terrain, allowing access to diverse scientific sites. Integrating AI-driven navigation systems reduces communication lag with Earth, enabling real-time decision-making and obstacle handling, and the use of 3D printing technology for on-site manufacturing and repairs increases mission longevity and self-sufficiency by allowing the rover to create and repair its own parts from Martian materials. These combined advancements significantly boost the rover's exploration and data collection capabilities.";
+        modalText.textContent = summaryText;
         overlay.style.display = 'flex';
     }
 });
