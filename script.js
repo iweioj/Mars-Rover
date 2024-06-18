@@ -161,8 +161,8 @@ function hideModal() {
 }
 
 function showCompletionMessage() {
-    modalText.innerHTML = `<p>Good job on learning about the works and achievements of Mars rovers! You have completed stage 2. Head over here to continue.</p>
-                           <a href="https://www.google.com" class="continue-button">Continue</a>`;
+    modalText.innerHTML = `<p>Good job on learning about the works and achievements of Mars rovers! You have completed stage 1. Head over here to continue.</p>
+                           <a href="index1.html">Continue</a>`;
     overlay.style.display = 'flex';
 }
 
