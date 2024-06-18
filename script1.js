@@ -42,21 +42,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 completedCount++;
                 showOverlay(dropArea.id);
                 if (completedCount === 4) {
-                    showFinalOverlay();
+                    showImprovementOverlay();
                 }
             }
         });
     });
 
     // Event listener for the "Next" button
-    nextButton.addEventListener('click', () => {
-        overlay.style.display = 'none';
-    });
+    nextButton.addEventListener('click', hideOverlay);
 
     // Event listener for the "Close" button
-    closeButton.addEventListener('click', () => {
-        overlay.style.display = 'none';
-    });
+    closeButton.addEventListener('click', hideOverlay);
 
     // Function to display the overlay with the part description
     function showOverlay(dropAreaId) {
@@ -82,10 +78,30 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.display = 'flex';
     }
 
-    // Function to display the final summary overlay
-    function showFinalOverlay() {
-        const summaryText = "Enhancing the Mars rover Perseverance with miniaturized nuclear batteries provides a consistent power supply, essential for continuous operation during dust storms and night-time, while advanced suspension systems improve mobility over Mars' rugged terrain, allowing access to diverse scientific sites. Integrating AI-driven navigation systems reduces communication lag with Earth, enabling real-time decision-making and obstacle handling, and the use of 3D printing technology for on-site manufacturing and repairs increases mission longevity and self-sufficiency by allowing the rover to create and repair its own parts from Martian materials. These combined advancements significantly boost the rover's exploration and data collection capabilities.";
-        modalText.textContent = summaryText;
+    // Function to display the improvement summary overlay
+    function showImprovementOverlay() {
+        const improvementMessage = "Enhancing the Mars rover Perseverance with miniaturized nuclear batteries provides a consistent power supply, essential for continuous operation during dust storms and night-time, while advanced suspension systems improve mobility over Mars' rugged terrain, allowing access to diverse scientific sites. Integrating AI-driven navigation systems reduces communication lag with Earth, enabling real-time decision-making and obstacle handling, and the use of 3D printing technology for on-site manufacturing and repairs increases mission longevity and self-sufficiency by allowing the rover to create and repair its own parts from Martian materials. These combined advancements significantly boost the rover's exploration and data collection capabilities.";
+        modalText.textContent = improvementMessage;
         overlay.style.display = 'flex';
+
+        // Event listener to show thank you message after improvement message
+        nextButton.removeEventListener('click', hideOverlay);
+        nextButton.addEventListener('click', showThankYouOverlay);
+    }
+
+    // Function to hide overlay
+    function hideOverlay() {
+        overlay.style.display = 'none';
+    }
+
+    // Function to display the thank you message
+    function showThankYouOverlay() {
+        const thankYouMessage = "Thank you for visiting the Mars Rover Space Museum! We hope you learned a lot and enjoyed assembling the Perseverance rover. Safe travels on your journey through space exploration!";
+        modalText.textContent = thankYouMessage;
+        overlay.style.display = 'flex';
+
+        // Event listener to close the overlay after thank you message
+        nextButton.removeEventListener('click', showThankYouOverlay);
+        nextButton.addEventListener('click', hideOverlay);
     }
 });
