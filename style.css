@@ -1,0 +1,163 @@
+/* Reset default margin and padding */
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set up the game container */
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Ensure map doesn't overflow */
+}
+
+#intro-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 3;
+}
+
+#intro-screen p {
+    margin: 0 0 20px 0;
+}
+
+/* Grid-based map */
+.map-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* 10 columns */
+    grid-template-rows: repeat(6, 1fr); /* 6 rows */
+    width: 100%;
+    height: 100%;
+    background-image: url('https://scx2.b-cdn.net/gfx/news/hires/2012/hadleycrater.jpg');
+    background-size: cover;
+    position: relative; /* Ensure child elements are positioned relative to the map */
+}
+
+/* Rover styles */
+#rover {
+    width: 120px; /* Adjust size as needed */
+    height: 120px; /* Adjust size as needed */
+    background-size: contain;
+    position: absolute;
+    z-index: 1;
+    background-repeat: no-repeat;
+    transition: left 0.3s, top 0.3s; /* Smooth transition for rover movement */
+}
+
+.rover-nasa {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f5/3D_Mars.png');
+  background-size: 100% 100%;
+}
+.rover-sojourner {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Mars_Pathfinder_Sojourner.png/800px-Mars_Pathfinder_Sojourner.png');
+    background-size: 100% 100%; /* Adjust background size */
+}
+
+.rover-spirit,
+.rover-opportunity {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d7/Mars_Exploration_Rover_spacecraft_model.png');
+    background-size: contain; /* Adjust background size */
+}
+
+.rover-curiosity {
+    background-image: url('https://d2pn8kiwq2w21t.cloudfront.net/images/28-mission-current-MSL-Curiosity-alt.height-700.png');
+    background-size: cover; /* Adjust background size */
+}
+
+.rover-perseverance {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6f/Perseverance_rover_design.png');
+    background-size: cover; /* Adjust background size */
+}
+
+/* Info box */
+#info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Logo styles */
+.logo {
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+    background-color: #ffcc00; /* Yellow background for logos */
+    border-radius: 50%; /* Make logos circular */
+    position: absolute;
+    z-index: 2; /* Ensure logos appear above the map */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth scale animation */
+    
+    /* New styles */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Set number color to white */
+    font-weight: bold; /* Make numbers bold */
+}
+
+.logo.active {
+    border: 4px solid blue; /* Increase border thickness and change color to blue */
+    width: 36px; /* Increase logo size to accommodate the border */
+    height: 36px; /* Increase logo size to accommodate the border */
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Scale up when hovered */
+}
+
+.logo.deactivated {
+    opacity: 0.5; /* Dim the opacity of deactivated logos */
+    pointer-events: none; /* Disable click events on deactivated logos */
+}
+
+/* Overlay and Modal styles */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 4;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#modal-text {
+    margin-bottom: 20px;
+}
+
+/* Ensure the modal and info images are scaled down */
+.modal-image,
+.info-image {
+    width: 100px; /* Set a fixed width for the images */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure it doesn't exceed container width */
+}
+
+.logo-image {
+    width: 100px; /* Set a fixed width for the images */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure it doesn't exceed container width */
+}
