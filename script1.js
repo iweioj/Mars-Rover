@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         dropArea.addEventListener('drop', (e) => {
             e.preventDefault();
-            if (dropArea.id === drop-${currentDraggedElement.id}){
+            if (dropArea.id === `drop-${currentDraggedElement.id}`) {
                 dropArea.innerHTML = '';
                 currentDraggedElement.style.width = '100%';
                 currentDraggedElement.style.height = '100%';
                 currentDraggedElement.style.objectFit = 'cover';
                 dropArea.appendChild(currentDraggedElement);
                 completedCount++;
-                console.log(Completed Count: ${completedCount});
+                console.log(`Completed Count: ${completedCount}`);
                 showOverlay(dropArea.id);
             }
         });
