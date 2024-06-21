@@ -30,6 +30,17 @@ html {
     margin: 0 0 20px 0;
 }
 
+#intro-screen span {
+    display: block;
+    margin-top: 20px; /* Adjust as needed for spacing between the span and the button */
+}
+
+
+#start-button {
+    display: block;
+    margin: 20px auto 0; /* Adjust margin as needed to control spacing */
+}
+
 /* Grid-based map */
 .map-grid {
     display: grid;
